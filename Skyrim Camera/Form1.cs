@@ -94,19 +94,19 @@ namespace Skyrim
         /// <param name="yaw"></param>
         /// <param name="pitch"></param>
         public void LookControls(float yaw, float pitch) {
-            if (Keyboard.IsKeyDown(lookUp) == true ||
-                Keyboard.IsKeyDown(lookDown) == true ||
-                Keyboard.IsKeyDown(lookRight) == true ||
-                Keyboard.IsKeyDown(lookLeft) == true)
+            if (Keyboard.IsKeyDown(lookUp) ||
+                Keyboard.IsKeyDown(lookDown) ||
+                Keyboard.IsKeyDown(lookRight) ||
+                Keyboard.IsKeyDown(lookLeft))
             {
 
-                if (Keyboard.IsKeyDown(lookUp) == true) 
+                if (Keyboard.IsKeyDown(lookUp)) 
                     pitch -= lookSpeed;
-                if (Keyboard.IsKeyDown(lookDown) == true) 
+                if (Keyboard.IsKeyDown(lookDown)) 
                     pitch += lookSpeed;
-                if (Keyboard.IsKeyDown(lookRight) == true)
+                if (Keyboard.IsKeyDown(lookRight))
                     yaw += lookSpeed;
-                if (Keyboard.IsKeyDown(lookLeft) == true)
+                if (Keyboard.IsKeyDown(lookLeft))
                     yaw -= lookSpeed;
 
                 // Save the changes to the game
@@ -125,24 +125,24 @@ namespace Skyrim
         /// <param name="pitch"></param>
         public void MovementControls(float yPos, float xPos, float zPos, float yaw, float pitch) {
             // Movement controls
-            if (Keyboard.IsKeyDown(moveFoward) == true ||
-                Keyboard.IsKeyDown(moveBackwards) == true ||
-                Keyboard.IsKeyDown(moveRight) == true ||
-                Keyboard.IsKeyDown(moveLeft) == true)
+            if (Keyboard.IsKeyDown(moveFoward) ||
+                Keyboard.IsKeyDown(moveBackwards) ||
+                Keyboard.IsKeyDown(moveRight) ||
+                Keyboard.IsKeyDown(moveLeft))
             {
 
-                if (Keyboard.IsKeyDown(moveFoward) == true) {
+                if (Keyboard.IsKeyDown(moveFoward)) {
                     zPos -= cameraSpeed * (float)Math.Sin(pitch);
                     xPos += cameraSpeed * (float)Math.Cos(pitch) * (float)Math.Sin(yaw);
                     yPos += cameraSpeed * (float)Math.Cos(pitch) * (float)Math.Cos(yaw);
-                } if (Keyboard.IsKeyDown(moveBackwards) == true) {
+                } if (Keyboard.IsKeyDown(moveBackwards)) {
                     zPos += cameraSpeed * (float)Math.Sin(pitch);
                     xPos -= cameraSpeed * (float)Math.Cos(pitch) * (float)Math.Sin(yaw);
                     yPos -= cameraSpeed * (float)Math.Cos(pitch) * (float)Math.Cos(yaw);
-                } if (Keyboard.IsKeyDown(moveLeft) == true) {
+                } if (Keyboard.IsKeyDown(moveLeft)) {
                     xPos -= cameraSpeed * (float)Math.Cos(yaw);
                     yPos += cameraSpeed * (float)Math.Sin(yaw);
-                } if (Keyboard.IsKeyDown(moveRight) == true) {
+                } if (Keyboard.IsKeyDown(moveRight)) {
                     xPos += cameraSpeed * (float)Math.Cos(yaw);
                     yPos -= cameraSpeed * (float)Math.Sin(yaw);
                 }
