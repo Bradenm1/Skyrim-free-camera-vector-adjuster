@@ -31,16 +31,22 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.labelCameraY = new System.Windows.Forms.Label();
-            this.yPos = new System.Windows.Forms.Label();
+            this.LyPos = new System.Windows.Forms.Label();
             this.labelCameraX = new System.Windows.Forms.Label();
             this.labelCameraZ = new System.Windows.Forms.Label();
-            this.xPos = new System.Windows.Forms.Label();
-            this.zPos = new System.Windows.Forms.Label();
+            this.LxPos = new System.Windows.Forms.Label();
+            this.LzPos = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.Lyaw = new System.Windows.Forms.Label();
+            this.Lpitch = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -61,16 +67,16 @@
             this.labelCameraY.TabIndex = 12;
             this.labelCameraY.Text = "Camera Y:";
             // 
-            // yPos
+            // LyPos
             // 
-            this.yPos.AutoSize = true;
-            this.yPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yPos.ForeColor = System.Drawing.Color.White;
-            this.yPos.Location = new System.Drawing.Point(131, 9);
-            this.yPos.Name = "yPos";
-            this.yPos.Size = new System.Drawing.Size(46, 25);
-            this.yPos.TabIndex = 13;
-            this.yPos.Text = "null";
+            this.LyPos.AutoSize = true;
+            this.LyPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LyPos.ForeColor = System.Drawing.Color.White;
+            this.LyPos.Location = new System.Drawing.Point(131, 9);
+            this.LyPos.Name = "LyPos";
+            this.LyPos.Size = new System.Drawing.Size(46, 25);
+            this.LyPos.TabIndex = 13;
+            this.LyPos.Text = "null";
             // 
             // labelCameraX
             // 
@@ -94,27 +100,27 @@
             this.labelCameraZ.TabIndex = 15;
             this.labelCameraZ.Text = "Camera Z:";
             // 
-            // xPos
+            // LxPos
             // 
-            this.xPos.AutoSize = true;
-            this.xPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xPos.ForeColor = System.Drawing.Color.White;
-            this.xPos.Location = new System.Drawing.Point(131, 34);
-            this.xPos.Name = "xPos";
-            this.xPos.Size = new System.Drawing.Size(46, 25);
-            this.xPos.TabIndex = 16;
-            this.xPos.Text = "null";
+            this.LxPos.AutoSize = true;
+            this.LxPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LxPos.ForeColor = System.Drawing.Color.White;
+            this.LxPos.Location = new System.Drawing.Point(131, 34);
+            this.LxPos.Name = "LxPos";
+            this.LxPos.Size = new System.Drawing.Size(46, 25);
+            this.LxPos.TabIndex = 16;
+            this.LxPos.Text = "null";
             // 
-            // zPos
+            // LzPos
             // 
-            this.zPos.AutoSize = true;
-            this.zPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zPos.ForeColor = System.Drawing.Color.White;
-            this.zPos.Location = new System.Drawing.Point(131, 59);
-            this.zPos.Name = "zPos";
-            this.zPos.Size = new System.Drawing.Size(46, 25);
-            this.zPos.TabIndex = 17;
-            this.zPos.Text = "null";
+            this.LzPos.AutoSize = true;
+            this.LzPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LzPos.ForeColor = System.Drawing.Color.White;
+            this.LzPos.Location = new System.Drawing.Point(131, 59);
+            this.LzPos.Name = "LzPos";
+            this.LzPos.Size = new System.Drawing.Size(46, 25);
+            this.LzPos.TabIndex = 17;
+            this.LzPos.Text = "null";
             // 
             // textBox1
             // 
@@ -150,27 +156,93 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // Lyaw
+            // 
+            this.Lyaw.AutoSize = true;
+            this.Lyaw.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lyaw.ForeColor = System.Drawing.Color.White;
+            this.Lyaw.Location = new System.Drawing.Point(14, 84);
+            this.Lyaw.Name = "Lyaw";
+            this.Lyaw.Size = new System.Drawing.Size(60, 25);
+            this.Lyaw.TabIndex = 22;
+            this.Lyaw.Text = "Yaw:";
+            // 
+            // Lpitch
+            // 
+            this.Lpitch.AutoSize = true;
+            this.Lpitch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lpitch.ForeColor = System.Drawing.Color.White;
+            this.Lpitch.Location = new System.Drawing.Point(14, 109);
+            this.Lpitch.Name = "Lpitch";
+            this.Lpitch.Size = new System.Drawing.Size(66, 25);
+            this.Lpitch.TabIndex = 23;
+            this.Lpitch.Text = "Pitch:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(131, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 25);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "null";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(131, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 25);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "null";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(254, 89);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 26;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(254, 114);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 27;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(388, 109);
+            this.ClientSize = new System.Drawing.Size(398, 154);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Lpitch);
+            this.Controls.Add(this.Lyaw);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.zPos);
-            this.Controls.Add(this.xPos);
+            this.Controls.Add(this.LzPos);
+            this.Controls.Add(this.LxPos);
             this.Controls.Add(this.labelCameraZ);
             this.Controls.Add(this.labelCameraX);
-            this.Controls.Add(this.yPos);
+            this.Controls.Add(this.LyPos);
             this.Controls.Add(this.labelCameraY);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Skyrim";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,16 +251,22 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelCameraY;
-        private System.Windows.Forms.Label yPos;
+        private System.Windows.Forms.Label LyPos;
         private System.Windows.Forms.Label labelCameraX;
         private System.Windows.Forms.Label labelCameraZ;
-        private System.Windows.Forms.Label xPos;
-        private System.Windows.Forms.Label zPos;
+        private System.Windows.Forms.Label LxPos;
+        private System.Windows.Forms.Label LzPos;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label Lyaw;
+        private System.Windows.Forms.Label Lpitch;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
 
