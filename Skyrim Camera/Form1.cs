@@ -36,6 +36,9 @@ namespace Skyrim
         // Fields
         private static Mem memory = new Mem();
         private static int gameProcessID;
+        // Processes of the game
+        private static Process process;
+        private static IntPtr processHandle;
 
         // Keys
         private static Key moveFoward = Key.W;
@@ -47,11 +50,10 @@ namespace Skyrim
         private static Key lookDown = Key.NumPad2;
         private static Key lookRight = Key.NumPad6;
         private static Key lookLeft = Key.NumPad4;
+
         // Speed
         private static int cameraSpeed = 2;
         private static float lookSpeed = 0.01f;
-        private static Process process = Process.GetProcessesByName("TESV")[0];
-        private static IntPtr processHandle = OpenProcess(0x1F0FFF, false, process.Id);
 
         public Form1()
         {
@@ -61,7 +63,7 @@ namespace Skyrim
         private void Form1_Load(object sender, EventArgs e)
         {
             SetWindowLong(this.Handle, -20, GetWindowLong(this.Handle, -20) | 0x80000 | 0x20);
-            TransparencyKey = System.Drawing.Color.Black;
+            TransparencyKey = Color.Black;
             textBox1.Visible = false;
             textBox2.Visible = false;
             textBox3.Visible = false;
@@ -80,9 +82,13 @@ namespace Skyrim
             // Get the process given the name
             gameProcessID = memory.getProcIDFromName(GAME_NAME);
             // Check if the process returned anything
-            if (gameProcessID > 0)
+            if (gameProcessID > 0) {
                 memory.OpenProcess(gameProcessID.ToString());
-        }
+                // Manual usage
+                process = Process.GetProcessesByName("TESV")[0];
+                processHandle = OpenProcess(0x1F0FFF, false, process.Id);
+            }
+    }
 
         /// <summary>
         /// Writes a address if the game is active
@@ -211,7 +217,6 @@ namespace Skyrim
                 LookControls(yaw, pitch);
                 MovementControls(yPos, xPos, zPos, yaw, pitch);
                 DisplayInformation(yPos, xPos, zPos, yaw, pitch);
-
                 if (Keyboard.IsKeyDown(Key.V)) {
                     int toRead = 0;
                     int bytesWritten = 0;
