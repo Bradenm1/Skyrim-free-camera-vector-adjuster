@@ -4,6 +4,8 @@ using Memory;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Windows.Input;
+using System.Diagnostics;
+using System.Text;
 
 namespace Skyrim
 {
@@ -18,6 +20,18 @@ namespace Skyrim
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         [DllImport("user32.dll", SetLastError = true)]
         private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr OpenProcess(int dwDesiredAccess,
+                bool bInheritHandle, int dwProcessId);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool WriteProcessMemory(int hProcess, Int64 lpBaseAddress,
+                byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesWritten);
+
+        [DllImport("kernel32.dll")]
+        public static extern bool ReadProcessMemory(int hProcess,
+                Int64 lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
 
         // Fields
         private static Mem memory = new Mem();
@@ -36,6 +50,8 @@ namespace Skyrim
         // Speed
         private static int cameraSpeed = 2;
         private static float lookSpeed = 0.01f;
+        private static Process process = Process.GetProcessesByName("TESV")[0];
+        private static IntPtr processHandle = OpenProcess(0x1F0FFF, false, process.Id);
 
         public Form1()
         {
@@ -195,6 +211,18 @@ namespace Skyrim
                 LookControls(yaw, pitch);
                 MovementControls(yPos, xPos, zPos, yaw, pitch);
                 DisplayInformation(yPos, xPos, zPos, yaw, pitch);
+
+                if (Keyboard.IsKeyDown(Key.V)) {
+                    int toRead = 0;
+                    int bytesWritten = 0;
+                    byte[] extBytes = new byte[1];
+                    byte[] buffer = new byte[1] { 0 };
+                    ReadProcessMemory((int)processHandle, FreeCamera.getLockCamera(), extBytes, extBytes.Length, ref toRead);
+                    buffer[0] = (extBytes[0] == 0) ? (byte)1 : (byte)0;
+                    label5.Text = buffer[0].ToString();
+                    WriteProcessMemory((int)processHandle, FreeCamera.getLockCamera(), buffer, buffer.Length, ref bytesWritten);
+                    System.Threading.Thread.Sleep(130);
+                }
             }
         }
 
